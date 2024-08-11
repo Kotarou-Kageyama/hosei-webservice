@@ -10,15 +10,50 @@
 </head>
 
 <body>
-  <h1>hosei</h1>
-  <ul class="user-list">
-    <% for (const user of users) { %>
-      <li class="user-name"><%= user %></li>
-    <% } %>
-  </ul>
+  <h1>My tasks</h1>
   <input type="text" class="input-text" />
-  <button class="send-button">送信</button>
+  <select name="month" class="month">
+    <script>
+      for(let i = 1; i<=12; i++){
+        document.write(`<option value="${i}">${i}</option>`)
+      }
+    </script>
+  </select>
+  月
+  <select name="day" class="day">
+    <script>
+      for(let i = 1; i<=31; i++){
+        document.write(`<option value="${i}">${i}</option>`)
+      }
+    </script>
+  </select>
+  日
+  <select name="hour" class="hour">
+    <script>
+      for(let i = 0; i<=23; i++){
+        document.write(`<option value="${i}">${i}</option>`)
+      }
+    </script>
+  </select>
+  時
+  <select name="minute" class="minute">
+    <script>
+      for(let i = 0; i<=59; i++){
+        document.write(`<option value="${i}">${i}</option>`)
+      }
+    </script>
+  </select>
+  分
+  <button class="send-button">追加</button>
+  <ol class="user-list">
+    <% for (const user of users) { %>
+      <li class="user-name"><%= user%></li>
+
+    <% } %>
+  </ol>
+  
   <script src="/static/index.js" defer></script>
+  
 </body>
 
 </html>
