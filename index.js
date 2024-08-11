@@ -42,11 +42,9 @@ async function main() {
 
   app.get('/', logMiddleware, async(req,res) =>{
     const users = await db.collection('user').find().toArray();
-    console.log(users);
     const names = users.map((user) => {
       return user.name;
     });
-
     res.render(path.resolve(__dirname, 'views/index.ejs'), {users: names});
   });
   async function inserUser(name){
@@ -55,12 +53,13 @@ async function main() {
     }
   }
   app.post('/api/user', express.json(), async (req, res) => {
-    const name = req.body.name;
+    const name = req.body.name
+
     if (!name) {
       res.status(400).send('Bad Request');
       return;
     }
-    await db.collection('user').insertOne({ name: name });
+    await db.collection('user').insertOne({ name: name});
     res.status(200).send('Created');
   });
   // ポート： 3000でサーバーを起動
